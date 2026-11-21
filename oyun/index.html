@@ -150,8 +150,8 @@
                 </a>
             </li>
             <li>
-                <a href="https://cisey.github.io/phrasalverbs/oyun/" title="Oyunlar">
-                    <span class="active">Oyunlar</span>
+                <a href="https://cisey.github.io/phrasalverbs/oyun/" title="Oyun">
+                    <span class="active">Oyun</span>
                 </a>
             </li>
         </ul>
@@ -159,680 +159,430 @@
 </header>
 <main class="main">
 
-<header class="page-header">
-    <h1>Phrasal Verb Oyunları</h1>
-    <div class="post-description">Phrasal verb&#39;leri eğlenerek öğrenin: adam asmaca, hızlı çeviri ve daha fazlası.</div>
-</header>
+<style>
+.hm-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 8px 0 32px;
+}
 
-<div class="games-container">
-    
-    <div class="game-tabs">
-        <button class="game-tab active" data-game="hangman">
-            <span class="tab-icon">🎯</span>
-            <span class="tab-text">Adam Asmaca</span>
-            <span class="tab-desc">Phrasal verb'ü harf harf tahmin et</span>
-        </button>
-        <button class="game-tab" data-game="quiz">
-            <span class="tab-icon">⚡</span>
-            <span class="tab-text">Hızlı Çeviri</span>
-            <span class="tab-desc">4 seçenekten doğru anlamı bul</span>
-        </button>
-        <button class="game-tab" data-game="timeattack">
-            <span class="tab-icon">⏱️</span>
-            <span class="tab-text">Zaman Yarışı</span>
-            <span class="tab-desc">30 saniyede kaç doğru yapabilirsin?</span>
-        </button>
-        <button class="game-tab" data-game="oddone">
-            <span class="tab-icon">🔍</span>
-            <span class="tab-text">Yanlış Olanı Bul</span>
-            <span class="tab-desc">Doğru anlamı diğerlerinden ayırt et</span>
-        </button>
+.hm-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.hm-head h1 {
+    margin: 0;
+    font-size: 1.45rem;
+}
+
+.hm-stats {
+    display: flex;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.hm-stat {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--card-bg, #f8fafc);
+    border: 1px solid var(--card-border, #e2e8f0);
+    color: var(--primary);
+}
+
+.hm-stat span {
+    color: var(--primary-orange, #ea580c);
+}
+
+.hm-card {
+    background: var(--card-bg, #f8fafc);
+    border: 1px solid var(--card-border, #e2e8f0);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.hm-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.hm-svg {
+    width: 120px;
+    height: 140px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.hm-part {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.hm-part.visible {
+    opacity: 1;
+}
+
+.hm-hint-box {
+    flex: 1;
+    min-width: 200px;
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.hm-hint-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--primary-orange, #ea580c);
+    margin-bottom: 4px;
+}
+
+.hm-hint-text {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--secondary);
+    margin: 0;
+}
+
+.hm-word {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 16px 0 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hm-char {
+    min-width: 24px;
+    text-align: center;
+    border-bottom: 2.5px solid var(--border);
+    padding-bottom: 2px;
+    color: var(--primary);
+}
+
+.hm-char.revealed {
+    color: var(--primary-orange, #ea580c);
+    border-color: var(--primary-orange, #ea580c);
+}
+
+.hm-space {
+    width: 14px;
+}
+
+.hm-letters {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 6px;
+}
+
+.hm-btn {
+    padding: 9px 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--theme);
+    color: var(--primary);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+}
+
+.hm-btn:hover:not(:disabled) {
+    border-color: var(--primary-orange, #ea580c);
+    color: var(--primary-orange, #ea580c);
+}
+
+.hm-btn:disabled {
+    cursor: default;
+}
+
+.hm-btn.correct {
+    background: #16a34a;
+    border-color: #16a34a;
+    color: #fff;
+}
+
+.hm-btn.wrong {
+    background: #dc2626;
+    border-color: #dc2626;
+    color: #fff;
+    opacity: 0.45;
+}
+
+.hm-footer {
+    margin-top: 16px;
+    text-align: center;
+    min-height: 44px;
+}
+
+.hm-msg {
+    font-size: 0.96rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hm-msg.win { color: #16a34a; }
+.hm-msg.lose { color: #dc2626; }
+
+.hm-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.hm-new-btn {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: var(--primary-orange, #ea580c);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.hm-detail-link {
+    padding: 8px 14px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    background: var(--theme);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+@media (max-width: 540px) {
+    .hm-letters {
+        grid-template-columns: repeat(7, 1fr);
+    }
+    .hm-word {
+        font-size: 1.35rem;
+    }
+}
+</style>
+
+<div class="hm-wrap">
+    <div class="hm-head">
+        <h1>🎮 Adam Asmaca</h1>
+        <div class="hm-stats">
+            <div class="hm-stat">Skor: <span id="hm-score">0</span></div>
+            <div class="hm-stat">Seri: <span id="hm-streak">0</span></div>
+        </div>
     </div>
 
-    
-    <div id="hangman-game" class="game-panel active">
-        <div class="game-header">
-            <h2>🎯 Adam Asmaca</h2>
-            <p>Phrasal verb'ü tahmin etmek için harflere tıkla. 6 yanlış hakkın var!</p>
-        </div>
-
-        <div class="game-stats">
-            <div class="stat-item">
-                <span class="stat-label">Oyun</span>
-                <span id="hangman-stats-total" class="stat-value">0</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">Kazanma</span>
-                <span id="hangman-stats-wins" class="stat-value">0</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">Seri</span>
-                <span id="hangman-stats-streak" class="stat-value">0</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">En İyi Seri</span>
-                <span id="hangman-stats-best" class="stat-value">0</span>
-            </div>
-        </div>
-
-        <div class="hangman-drawing">
-            <svg viewBox="0 0 200 250" class="hangman-svg">
-                <line x1="20" y1="230" x2="120" y2="230" stroke="currentColor" stroke-width="4"/>
-                <line x1="60" y1="230" x2="60" y2="30" stroke="currentColor" stroke-width="4"/>
-                <line x1="60" y1="30" x2="140" y2="30" stroke="currentColor" stroke-width="4"/>
-                <line x1="140" y1="30" x2="140" y2="60" stroke="currentColor" stroke-width="4"/>
-                <circle id="h-head" cx="140" cy="80" r="20" stroke="currentColor" stroke-width="4" fill="none" class="hangman-part"/>
-                <line id="h-body" x1="140" y1="100" x2="140" y2="160" stroke="currentColor" stroke-width="4" class="hangman-part"/>
-                <line id="h-left-arm" x1="140" y1="115" x2="110" y2="145" stroke="currentColor" stroke-width="4" class="hangman-part"/>
-                <line id="h-right-arm" x1="140" y1="115" x2="170" y2="145" stroke="currentColor" stroke-width="4" class="hangman-part"/>
-                <line id="h-left-leg" x1="140" y1="160" x2="115" y2="200" stroke="currentColor" stroke-width="4" class="hangman-part"/>
-                <line id="h-right-leg" x1="140" y1="160" x2="165" y2="200" stroke="currentColor" stroke-width="4" class="hangman-part"/>
+    <div class="hm-card">
+        <div class="hm-top">
+            <svg class="hm-svg" viewBox="0 0 200 230" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+                <line x1="20" y1="215" x2="120" y2="215" />
+                <line x1="50" y1="215" x2="50" y2="20" />
+                <line x1="50" y1="20" x2="135" y2="20" />
+                <line x1="135" y1="20" x2="135" y2="45" />
+                <circle class="hm-part" data-step="1" cx="135" cy="65" r="20" />
+                <line class="hm-part" data-step="2" x1="135" y1="85" x2="135" y2="145" />
+                <line class="hm-part" data-step="3" x1="135" y1="100" x2="108" y2="125" />
+                <line class="hm-part" data-step="4" x1="135" y1="100" x2="162" y2="125" />
+                <line class="hm-part" data-step="5" x1="135" y1="145" x2="112" y2="182" />
+                <line class="hm-part" data-step="6" x1="135" y1="145" x2="158" y2="182" />
             </svg>
-        </div>
 
-        <div id="hangman-word" class="hangman-word"></div>
-        <div id="hangman-letters" class="hangman-letters"></div>
-        <div id="hangman-status" class="game-status"></div>
-    </div>
-
-    
-    <div id="quiz-game" class="game-panel">
-        <div class="game-header">
-            <h2>⚡ Hızlı Çeviri</h2>
-            <p>Phrasal verb'ün Türkçe anlamını 4 seçenek arasından bul!</p>
-        </div>
-
-        <div class="quiz-score-bar">
-            <div class="score-item">
-                <span class="score-label">Skor</span>
-                <span id="quiz-score-value" class="score-value">0</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Soru</span>
-                <span id="quiz-total-value" class="score-value">0</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Başarı</span>
-                <span id="quiz-percent-value" class="score-value">0%</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">En İyi</span>
-                <span id="quiz-best-value" class="score-value">0</span>
+            <div class="hm-hint-box">
+                <div class="hm-hint-label">İpucu (Türkçe Anlamı)</div>
+                <p class="hm-hint-text" id="hm-hint">Kelimeler yükleniyor...</p>
             </div>
         </div>
 
-        <div class="quiz-difficulty">
-            <span class="difficulty-label">Zorluk:</span>
-            <button class="difficulty-btn active" data-difficulty="all">Tümü</button>
-            <button class="difficulty-btn" data-difficulty="easy">Kolay (1-2 kelime)</button>
-            <button class="difficulty-btn" data-difficulty="hard">Zor (3+ kelime)</button>
-        </div>
+        <div class="hm-word" id="hm-word"></div>
+        <div class="hm-letters" id="hm-letters"></div>
 
-        <div id="quiz-question" class="quiz-question"></div>
-        <div id="quiz-options" class="quiz-options"></div>
-        <div id="quiz-feedback" class="quiz-feedback"></div>
-        <div id="quiz-next-container" class="quiz-next-container"></div>
-    </div>
-
-    
-    <div id="timeattack-game" class="game-panel">
-        <div class="game-header">
-            <h2>⏱️ Zaman Yarışı</h2>
-            <p>30 saniyede kaç phrasal verb'ü doğru çevirebilirsin? Her doğru +2 saniye!</p>
-        </div>
-
-        <div class="quiz-score-bar">
-            <div class="score-item">
-                <span class="score-label">Skor</span>
-                <span id="ta-score" class="score-value">0</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Süre</span>
-                <span id="ta-time" class="score-value">30s</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Doğru</span>
-                <span id="ta-correct" class="score-value">0</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Yanlış</span>
-                <span id="ta-wrong" class="score-value">0</span>
+        <div class="hm-footer" id="hm-footer">
+            <div class="hm-msg" id="hm-msg"></div>
+            <div class="hm-actions">
+                <button type="button" class="hm-new-btn" id="hm-new-btn">Yeni Kelime</button>
+                <a class="hm-detail-link" id="hm-detail-link" href="#" style="display:none;">Kelimeyi İncele →</a>
             </div>
         </div>
-
-        <div id="ta-question" class="quiz-question"></div>
-        <div id="ta-options" class="quiz-options"></div>
-        <div id="ta-feedback" class="quiz-feedback"></div>
-        <div id="ta-next-container" class="quiz-next-container"></div>
-    </div>
-
-    
-    <div id="oddone-game" class="game-panel">
-        <div class="game-header">
-            <h2>🔍 Yanlış Olanı Bul</h2>
-            <p>4 tanımdan sadece 1 tanesi sorulan phrasal verb'e ait. Onu bul!</p>
-        </div>
-
-        <div class="quiz-score-bar">
-            <div class="score-item">
-                <span class="score-label">Skor</span>
-                <span id="oo-score" class="score-value">0</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Soru</span>
-                <span id="oo-total" class="score-value">0</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Başarı</span>
-                <span id="oo-percent" class="score-value">0%</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Seri</span>
-                <span id="oo-streak" class="score-value">0</span>
-            </div>
-        </div>
-
-        <div id="oo-question" class="quiz-question"></div>
-        <div id="oo-options" class="quiz-options"></div>
-        <div id="oo-feedback" class="quiz-feedback"></div>
-        <div id="oo-next-container" class="quiz-next-container"></div>
     </div>
 </div>
 
 <script>
-let phrasalVerbs = [];
+document.addEventListener('DOMContentLoaded', function () {
+    const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    const MAX_WRONG = 6;
 
-fetch('\/phrasalverbs\/phrasal-verbs-index.json')
-    .then(r => r.json())
-    .then(data => {
-        phrasalVerbs = Object.values(data);
-        initHangman();
-        initQuiz();
-        initTimeAttack();
-        initOddOne();
-        loadStats();
-    })
-    .catch(err => console.error('Veri yüklenemedi:', err));
+    let words = [];
+    let current = null;
+    let target = '';
+    let guessed = new Set();
+    let wrongCount = 0;
+    let gameOver = false;
+    let score = 0;
+    let streak = 0;
 
+    const wordEl = document.getElementById('hm-word');
+    const lettersEl = document.getElementById('hm-letters');
+    const hintEl = document.getElementById('hm-hint');
+    const msgEl = document.getElementById('hm-msg');
+    const newBtn = document.getElementById('hm-new-btn');
+    const detailLink = document.getElementById('hm-detail-link');
+    const scoreEl = document.getElementById('hm-score');
+    const streakEl = document.getElementById('hm-streak');
+    const parts = document.querySelectorAll('.hm-part');
 
-function getStats() {
-    return JSON.parse(localStorage.getItem('pv_stats') || '{}');
-}
-
-function saveStats(stats) {
-    localStorage.setItem('pv_stats', JSON.stringify(stats));
-}
-
-function loadStats() {
-    const stats = getStats();
-    updateHangmanStats(stats.hangman || {});
-    updateQuizStats(stats.quiz || {});
-}
-
-function updateHangmanStats(hStats) {
-    document.getElementById('hangman-stats-total').textContent = hStats.total || 0;
-    document.getElementById('hangman-stats-wins').textContent = hStats.wins || 0;
-    document.getElementById('hangman-stats-streak').textContent = hStats.streak || 0;
-    document.getElementById('hangman-stats-best').textContent = hStats.bestStreak || 0;
-}
-
-function updateQuizStats(qStats) {
-    document.getElementById('quiz-best-value').textContent = qStats.bestStreak || 0;
-}
-
-
-function getPvAdi(kayit) {
-    return kayit.phrasal_verb || kayit.title.split(' Ne Demek')[0].replace(/'/g, '').trim();
-}
-
-function temizleAnlam(anlam, pvAdi) {
-    if (!anlam) return '';
-    let temiz = anlam.trim();
-
-    if (pvAdi) {
-        const escaped = pvAdi.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const tirnak = "['\"\u2018\u2019\u201c\u201d]";
-        const bastakiTekrar = new RegExp(
-            '^' + tirnak + '?\\s*' + escaped + '\\s*' + tirnak + '?\\s*[,:;\\-\u2013\u2014]?\\s*',
-            'i'
-        );
-        temiz = temiz.replace(bastakiTekrar, '');
+    function extractWord(title) {
+        return (title || '')
+            .replace(/\s+ne demek\?.*$/i, '')
+            .replace(/^['‘’"]+|['‘’"]+$/g, '')
+            .trim()
+            .toUpperCase();
     }
 
-    return temiz.trim();
-}
-
-function kisaltAnlam(anlam, maxUzunluk = 70) {
-    let kisa = anlam.split(';')[0].split('.')[0].trim();
-    if (kisa.length > maxUzunluk) {
-        kisa = kisa.substring(0, maxUzunluk).trim() + '...';
-    }
-    return kisa;
-}
-
-function kayitKullanilabilirMi(v) {
-    const sa = (v.short_answer || v.summary || '').trim();
-    if (sa.length <= 20) return false;
-    if (/^[İIi]ngilizce\s+bir\s+phrasal/i.test(sa)) return false;
-    if (/^Türkçede\s+en\s+yaygın/i.test(sa)) return false;
-    return true;
-}
-
-function temizHavuz() {
-    return phrasalVerbs.filter(kayitKullanilabilirMi);
-}
-
-
-function secenekMetni(kayit) {
-    const pvAdi = getPvAdi(kayit);
-    let anlam = kayit.short_answer || kayit.summary || '';
-    anlam = temizleAnlam(anlam, pvAdi);
-    let kisa = kisaltAnlam(anlam, 70);
-    if (!kisa) kisa = pvAdi;
-    return kisa;
-}
-
-
-let hangmanWord = '';
-let hangmanGuessed = [];
-let hangmanWrong = 0;
-let hangmanGameOver = false;
-const maxWrong = 6;
-
-function initHangman() {
-    const random = phrasalVerbs[Math.floor(Math.random() * phrasalVerbs.length)];
-    hangmanWord = random.title.split(' Ne Demek')[0].replace(/'/g, '').trim().toLowerCase();
-    hangmanGuessed = [];
-    hangmanWrong = 0;
-    hangmanGameOver = false;
-    renderHangman();
-}
-
-function renderHangman() {
-    const wordDisplay = hangmanWord.split('').map(l => {
-        if (l === ' ') return '<span class="space">&nbsp;&nbsp;</span>';
-        return hangmanGuessed.includes(l)
-            ? `<span class="letter-revealed">${l}</span>`
-            : '<span class="letter-hidden">_</span>';
-    }).join('');
-
-    document.getElementById('hangman-word').innerHTML = wordDisplay;
-
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    document.getElementById('hangman-letters').innerHTML = alphabet.map(l => {
-        const cls = hangmanGuessed.includes(l) ? 'guessed' : '';
-        const disabled = hangmanGuessed.includes(l) || hangmanGameOver ? 'disabled' : '';
-        const correct = hangmanGuessed.includes(l) && hangmanWord.includes(l) ? 'correct' : '';
-        const wrong = hangmanGuessed.includes(l) && !hangmanWord.includes(l) ? 'wrong' : '';
-        return `<button class="letter-btn ${cls} ${correct} ${wrong}" ${disabled} onclick="guessLetter('${l}')">${l}</button>`;
-    }).join('');
-
-    const parts = ['h-head', 'h-body', 'h-left-arm', 'h-right-arm', 'h-left-leg', 'h-right-leg'];
-    parts.forEach((id, i) => {
-        const el = document.getElementById(id);
-        if (i < hangmanWrong) {
-            el.classList.add('visible');
-        } else {
-            el.classList.remove('visible');
-        }
-    });
-
-    const isWon = hangmanWord.split('').every(l => l === ' ' || hangmanGuessed.includes(l));
-    const status = document.getElementById('hangman-status');
-
-    if (isWon && !hangmanGameOver) {
-        hangmanGameOver = true;
-        recordHangmanWin();
-        status.innerHTML = `<div class="status-win">🎉 Tebrikler! Doğru bildiniz!</div><button class="btn-new-game" onclick="initHangman()">🔄 Yeni Oyun</button>`;
-    } else if (hangmanWrong >= maxWrong && !hangmanGameOver) {
-        hangmanGameOver = true;
-        recordHangmanLoss();
-        status.innerHTML = `<div class="status-lose">😢 Kaybettiniz! Doğru cevap: <strong>${hangmanWord}</strong></div><button class="btn-new-game" onclick="initHangman()">🔄 Yeni Oyun</button>`;
-    } else if (!hangmanGameOver) {
-        status.innerHTML = `<div class="status-info">Yanlış: ${hangmanWrong}/${maxWrong}</div>`;
-    }
-}
-
-function guessLetter(letter) {
-    if (hangmanGuessed.includes(letter) || hangmanGameOver) return;
-    hangmanGuessed.push(letter);
-    if (!hangmanWord.includes(letter)) hangmanWrong++;
-    renderHangman();
-}
-
-function recordHangmanWin() {
-    const stats = getStats();
-    const h = stats.hangman || { total: 0, wins: 0, streak: 0, bestStreak: 0 };
-    h.total++;
-    h.wins++;
-    h.streak = (h.streak || 0) + 1;
-    if (h.streak > (h.bestStreak || 0)) h.bestStreak = h.streak;
-    stats.hangman = h;
-    saveStats(stats);
-    updateHangmanStats(h);
-}
-
-function recordHangmanLoss() {
-    const stats = getStats();
-    const h = stats.hangman || { total: 0, wins: 0, streak: 0, bestStreak: 0 };
-    h.total++;
-    h.streak = 0;
-    stats.hangman = h;
-    saveStats(stats);
-    updateHangmanStats(h);
-}
-
-
-let quizScore = 0;
-let quizTotal = 0;
-let quizStreak = 0;
-let quizAnswered = false;
-let quizDifficulty = 'all';
-let quizLocked = false;
-let quizCorrectIndex = -1;
-
-function initQuiz() {
-    quizAnswered = false;
-    quizLocked = false;
-
-    let havuz = temizHavuz();
-
-    if (quizDifficulty === 'easy') {
-        havuz = havuz.filter(v => getPvAdi(v).split(' ').length <= 2);
-    } else if (quizDifficulty === 'hard') {
-        havuz = havuz.filter(v => getPvAdi(v).split(' ').length >= 3);
+    function maskHint(text, phrase) {
+        if (!text) return 'Bu phrasal verb\'ü harf tahmin ederek bul.';
+        const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        let cleaned = text.replace(new RegExp(escaped, 'ig'), '_____');
+        if (cleaned.length > 180) cleaned = cleaned.slice(0, 177) + '...';
+        return cleaned;
     }
 
-    if (havuz.length < 4) havuz = temizHavuz();
-    if (havuz.length < 4) havuz = phrasalVerbs;
-
-    const quizCurrent = havuz[Math.floor(Math.random() * havuz.length)];
-    const pv = getPvAdi(quizCurrent);
-
-    const options = [quizCurrent];
-    let guvenlik = 0;
-    while (options.length < 4 && guvenlik < 200) {
-        const rand = havuz[Math.floor(Math.random() * havuz.length)];
-        if (!options.includes(rand)) options.push(rand);
-        guvenlik++;
-    }
-
-    if (options.length < 4) {
-        let guvenlik2 = 0;
-        while (options.length < 4 && guvenlik2 < 200) {
-            const rand = phrasalVerbs[Math.floor(Math.random() * phrasalVerbs.length)];
-            if (!options.includes(rand)) options.push(rand);
-            guvenlik2++;
+    function renderWord() {
+        wordEl.innerHTML = '';
+        for (const ch of target) {
+            if (ch === ' ') {
+                const sp = document.createElement('span');
+                sp.className = 'hm-space';
+                wordEl.appendChild(sp);
+            } else if (!/[A-Z]/.test(ch)) {
+                const s = document.createElement('span');
+                s.className = 'hm-char revealed';
+                s.textContent = ch;
+                wordEl.appendChild(s);
+            } else {
+                const s = document.createElement('span');
+                const show = guessed.has(ch) || gameOver;
+                s.className = 'hm-char' + (guessed.has(ch) ? ' revealed' : '');
+                s.textContent = show ? ch : '';
+                wordEl.appendChild(s);
+            }
         }
     }
 
-    options.sort(() => Math.random() - 0.5);
-    quizCorrectIndex = options.indexOf(quizCurrent);
-
-    document.getElementById('quiz-question').innerHTML = `"<strong>${pv}</strong>" ne demek?`;
-    document.getElementById('quiz-options').innerHTML = options.map((o, idx) =>
-        `<button class="quiz-option" data-index="${idx}" onclick="answerQuiz(${idx}, this)">${secenekMetni(o)}</button>`
-    ).join('');
-
-    document.getElementById('quiz-feedback').innerHTML = '';
-    document.getElementById('quiz-next-container').innerHTML = '';
-    updateQuizScore();
-}
-
-function updateQuizScore() {
-    document.getElementById('quiz-score-value').textContent = quizScore;
-    document.getElementById('quiz-total-value').textContent = quizTotal;
-    const percent = quizTotal > 0 ? Math.round((quizScore / quizTotal) * 100) : 0;
-    document.getElementById('quiz-percent-value').textContent = percent + '%';
-}
-
-function answerQuiz(selectedIdx, btn) {
-    if (quizAnswered || quizLocked) return;
-    quizAnswered = true;
-    quizTotal++;
-    const feedback = document.getElementById('quiz-feedback');
-
-    document.querySelectorAll('#quiz-options .quiz-option').forEach(b => b.disabled = true);
-
-    if (selectedIdx === quizCorrectIndex) {
-        quizScore++;
-        quizStreak++;
-        btn.classList.add('correct');
-        feedback.innerHTML = '<div class="feedback-correct">✅ Doğru!</div>';
-
-        const stats = getStats();
-        const q = stats.quiz || { bestStreak: 0 };
-        if (quizStreak > (q.bestStreak || 0)) q.bestStreak = quizStreak;
-        stats.quiz = q;
-        saveStats(stats);
-        updateQuizStats(q);
-    } else {
-        quizStreak = 0;
-        btn.classList.add('wrong');
-        feedback.innerHTML = '<div class="feedback-wrong">❌ Yanlış! Doğru cevap vurgulandı.</div>';
-        document.querySelectorAll('#quiz-options .quiz-option').forEach(b => {
-            if (parseInt(b.dataset.index, 10) === quizCorrectIndex) b.classList.add('correct');
+    function renderParts() {
+        parts.forEach(p => {
+            const step = parseInt(p.dataset.step, 10);
+            p.classList.toggle('visible', step <= wrongCount);
         });
     }
 
-    updateQuizScore();
-    document.getElementById('quiz-next-container').innerHTML =
-        '<button class="btn-new-game" onclick="initQuiz()">➡️ Sonraki Soru</button>';
-}
-
-
-let taScore = 0;
-let taCorrect = 0;
-let taWrong = 0;
-let taTimeLeft = 30;
-let taTimer = null;
-let taAnswered = false;
-let taCorrectIndex = -1;
-
-function initTimeAttack() {
-    if (taTimer) clearInterval(taTimer);
-    taScore = 0;
-    taCorrect = 0;
-    taWrong = 0;
-    taTimeLeft = 30;
-    taAnswered = false;
-
-    document.getElementById('ta-score').textContent = '0';
-    document.getElementById('ta-time').textContent = '30s';
-    document.getElementById('ta-correct').textContent = '0';
-    document.getElementById('ta-wrong').textContent = '0';
-    document.getElementById('ta-next-container').innerHTML = '';
-    document.getElementById('ta-feedback').innerHTML = '';
-
-    taTimer = setInterval(() => {
-        taTimeLeft--;
-        document.getElementById('ta-time').textContent = taTimeLeft + 's';
-        if (taTimeLeft <= 5) {
-            document.getElementById('ta-time').classList.add('danger');
-        }
-        if (taTimeLeft <= 0) {
-            endTimeAttack();
-        }
-    }, 1000);
-
-    sonrakiTASoru();
-}
-
-function sonrakiTASoru() {
-    if (taTimeLeft <= 0) return;
-    taAnswered = false;
-
-    const havuz = temizHavuz();
-    const current = havuz[Math.floor(Math.random() * havuz.length)];
-    const pv = getPvAdi(current);
-
-    const options = [current];
-    let guvenlik = 0;
-    while (options.length < 4 && guvenlik < 200) {
-        const rand = havuz[Math.floor(Math.random() * havuz.length)];
-        if (!options.includes(rand)) options.push(rand);
-        guvenlik++;
-    }
-    options.sort(() => Math.random() - 0.5);
-    taCorrectIndex = options.indexOf(current);
-
-    document.getElementById('ta-question').innerHTML = `"<strong>${pv}</strong>" ne demek?`;
-    document.getElementById('ta-options').innerHTML = options.map((o, idx) =>
-        `<button class="quiz-option" data-index="${idx}" onclick="answerTA(${idx}, this)">${secenekMetni(o)}</button>`
-    ).join('');
-    document.getElementById('ta-feedback').innerHTML = '';
-}
-
-function answerTA(idx, btn) {
-    if (taAnswered || taTimeLeft <= 0) return;
-    taAnswered = true;
-
-    document.querySelectorAll('#ta-options .quiz-option').forEach(b => b.disabled = true);
-
-    if (idx === taCorrectIndex) {
-        taScore += 10;
-        taCorrect++;
-        taTimeLeft += 2;
-        btn.classList.add('correct');
-        document.getElementById('ta-feedback').innerHTML = '<div class="feedback-correct">✅ Doğru! +10 puan, +2 saniye</div>';
-    } else {
-        taWrong++;
-        btn.classList.add('wrong');
-        document.getElementById('ta-feedback').innerHTML = '<div class="feedback-wrong">❌ Yanlış!</div>';
-        document.querySelectorAll('#ta-options .quiz-option').forEach(b => {
-            if (parseInt(b.dataset.index, 10) === taCorrectIndex) b.classList.add('correct');
+    function renderKeyboard() {
+        lettersEl.innerHTML = '';
+        ALPHABET.forEach(letter => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'hm-btn';
+            btn.textContent = letter;
+            if (guessed.has(letter)) {
+                btn.disabled = true;
+                btn.classList.add(target.includes(letter) ? 'correct' : 'wrong');
+            } else if (gameOver) {
+                btn.disabled = true;
+            }
+            btn.addEventListener('click', () => handleGuess(letter));
+            lettersEl.appendChild(btn);
         });
     }
 
-    document.getElementById('ta-score').textContent = taScore;
-    document.getElementById('ta-correct').textContent = taCorrect;
-    document.getElementById('ta-wrong').textContent = taWrong;
-    document.getElementById('ta-time').textContent = taTimeLeft + 's';
-
-    setTimeout(() => {
-        if (taTimeLeft > 0) sonrakiTASoru();
-    }, 700);
-}
-
-function endTimeAttack() {
-    if (taTimer) clearInterval(taTimer);
-    document.getElementById('ta-time').classList.remove('danger');
-    document.getElementById('ta-options').innerHTML = '';
-    document.getElementById('ta-question').innerHTML = '⏱️ Süre bitti!';
-    document.getElementById('ta-feedback').innerHTML =
-        `<div class="status-win">🎉 Oyun bitti! Skor: <strong>${taScore}</strong> | Doğru: ${taCorrect} | Yanlış: ${taWrong}</div>`;
-    document.getElementById('ta-next-container').innerHTML =
-        '<button class="btn-new-game" onclick="initTimeAttack()">🔄 Yeni Oyun</button>';
-}
-
-
-
-
-
-let ooScore = 0;
-let ooTotal = 0;
-let ooStreak = 0;
-let ooAnswered = false;
-let ooCorrectIndex = -1;
-
-function initOddOne() {
-    ooAnswered = false;
-
-    const havuz = temizHavuz();
-    if (havuz.length < 4) return;
-
-    
-    const karisik = havuz.slice();
-    for (let i = karisik.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [karisik[i], karisik[j]] = [karisik[j], karisik[i]];
+    function checkEnd() {
+        const allRevealed = target.split('').every(ch => !/[A-Z]/.test(ch) || guessed.has(ch));
+        if (allRevealed) {
+            gameOver = true;
+            score += 10;
+            streak += 1;
+            scoreEl.textContent = score;
+            streakEl.textContent = streak;
+            msgEl.className = 'hm-msg win';
+            msgEl.textContent = '🎉 Tebrikler! Doğru bildin: ' + target.toLowerCase();
+            detailLink.href = current.permalink || '#';
+            detailLink.style.display = 'inline-block';
+        } else if (wrongCount >= MAX_WRONG) {
+            gameOver = true;
+            streak = 0;
+            streakEl.textContent = streak;
+            msgEl.className = 'hm-msg lose';
+            msgEl.textContent = 'Bilemedin! Doğru cevap: ' + target.toLowerCase();
+            detailLink.href = current.permalink || '#';
+            detailLink.style.display = 'inline-block';
+        }
     }
-    const secilenler = karisik.slice(0, 4);
 
-    
-    const hedefIdx = Math.floor(Math.random() * 4);
-    const hedef = secilenler[hedefIdx];
-    const hedefPv = getPvAdi(hedef);
-
-    
-    const options = secilenler.slice();
-    
-    for (let i = options.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [options[i], options[j]] = [options[j], options[i]];
+    function handleGuess(letter) {
+        if (gameOver || guessed.has(letter)) return;
+        guessed.add(letter);
+        if (!target.includes(letter)) wrongCount++;
+        checkEnd();
+        renderParts();
+        renderWord();
+        renderKeyboard();
     }
-    ooCorrectIndex = options.indexOf(hedef);
 
-    
-    document.getElementById('oo-question').innerHTML =
-        `Aşağıdaki tanımlardan hangisi <strong>"${hedefPv}"</strong> phrasal verb'üne aittir?`;
+    function startNewGame() {
+        if (!words.length) return;
+        current = words[Math.floor(Math.random() * words.length)];
+        target = extractWord(current.title);
+        guessed = new Set();
+        wrongCount = 0;
+        gameOver = false;
+        msgEl.textContent = '';
+        msgEl.className = 'hm-msg';
+        detailLink.style.display = 'none';
+        hintEl.textContent = maskHint(current.description || current.summary, target);
+        renderParts();
+        renderWord();
+        renderKeyboard();
+    }
 
-    
-    document.getElementById('oo-options').innerHTML = options.map((o, idx) =>
-        `<button class="quiz-option" data-index="${idx}" onclick="answerOO(${idx}, this)">${secenekMetni(o)}</button>`
-    ).join('');
+    newBtn.addEventListener('click', startNewGame);
 
-    document.getElementById('oo-feedback').innerHTML = '';
-    document.getElementById('oo-next-container').innerHTML = '';
-    updateOOScore();
-}
+    document.addEventListener('keydown', function (e) {
+        const key = e.key.toUpperCase();
+        if (/^[A-Z]$/.test(key)) {
+            handleGuess(key);
+        } else if (e.key === 'Enter' && gameOver) {
+            startNewGame();
+        }
+    });
 
-function updateOOScore() {
-    document.getElementById('oo-score').textContent = ooScore;
-    document.getElementById('oo-total').textContent = ooTotal;
-    const percent = ooTotal > 0 ? Math.round((ooScore / ooTotal) * 100) : 0;
-    document.getElementById('oo-percent').textContent = percent + '%';
-    document.getElementById('oo-streak').textContent = ooStreak;
-}
-
-function answerOO(idx, btn) {
-    if (ooAnswered) return;
-    ooAnswered = true;
-    ooTotal++;
-
-    document.querySelectorAll('#oo-options .quiz-option').forEach(b => b.disabled = true);
-
-    if (idx === ooCorrectIndex) {
-        ooScore++;
-        ooStreak++;
-        btn.classList.add('correct');
-        document.getElementById('oo-feedback').innerHTML = '<div class="feedback-correct">✅ Doğru!</div>';
-    } else {
-        ooStreak = 0;
-        btn.classList.add('wrong');
-        document.getElementById('oo-feedback').innerHTML = '<div class="feedback-wrong">❌ Yanlış! Doğru cevap vurgulandı.</div>';
-        document.querySelectorAll('#oo-options .quiz-option').forEach(b => {
-            if (parseInt(b.dataset.index, 10) === ooCorrectIndex) b.classList.add('correct');
+    fetch('\/phrasalverbs\/phrasal-verbs\/index.json')
+        .then(r => r.json())
+        .then(data => {
+            words = data.filter(item => {
+                if (!item.title || !/ne demek/i.test(item.title)) return false;
+                const w = extractWord(item.title);
+                return /^[A-Z\s-]+$/.test(w) && w.length >= 4 && w.length <= 24;
+            });
+            startNewGame();
+        })
+        .catch(() => {
+            hintEl.textContent = 'Kelime listesi yüklenemedi.';
         });
-    }
-
-    updateOOScore();
-    document.getElementById('oo-next-container').innerHTML =
-        '<button class="btn-new-game" onclick="initOddOne()">➡️ Sonraki Soru</button>';
-}
-
-
-document.querySelectorAll('.difficulty-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        quizDifficulty = btn.dataset.difficulty;
-        initQuiz();
-    });
-});
-
-
-document.querySelectorAll('.game-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-        document.querySelectorAll('.game-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.game + '-game').classList.add('active');
-
-        const game = tab.dataset.game;
-        if (game === 'timeattack') initTimeAttack();
-        else if (game === 'oddone') initOddOne();
-    });
 });
 </script>
     </main>
