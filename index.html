@@ -401,7 +401,7 @@ Kelimeyi İncele →">
             <div id="home-search-results"></div>
         </div>
         <div class="pv-pills">
-            <a href="/phrasalverbs/tags/s%c4%b1nav-ingilizcesi/" class="pv-pill featured">🎯 YDS / YÖKDİL (149)</a>
+            <a href="/phrasalverbs/tags/s%c4%b1nav-ingilizcesi/" class="pv-pill featured">🎯 YDS / YÖKDİL</a>
             <a href="/phrasalverbs/tags/akademik-ingilizce/" class="pv-pill">🎓 Akademik</a>
             <a href="/phrasalverbs/tags/g%c3%bcnl%c3%bck-konu%c5%9fma/" class="pv-pill">💬 Günlük</a>
             <a href="/phrasalverbs/tags/i%c5%9f-ingilizcesi/" class="pv-pill">💼 İş İngilizcesi</a>
@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!item) return;
         document.getElementById('daily-pv-label').textContent = label;
         document.getElementById('daily-pv-title').textContent = cleanName(item.title) || 'Kelime';
-        document.getElementById('daily-pv-meaning').textContent = item.description || item.summary || 'Kelime detaylarını incelemek için tıklayın.';
+        document.getElementById('daily-pv-meaning').innerHTML = item.description || item.summary || 'Kelime detaylarını incelemek için tıklayın.';
         document.getElementById('daily-pv-link').href = item.permalink || '#';
     }
 
