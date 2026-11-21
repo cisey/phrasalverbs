@@ -47,44 +47,6 @@
     "url": "https://phrasalverb.org/phrasal-verbs/"
   }
 }
-</script><script>
-document.addEventListener('DOMContentLoaded', function() {
-  
-  const titleElement = document.querySelector('h1');
-  if (!titleElement) return;
-  
-  const fullTitle = titleElement.textContent.trim();
-  const phrase = fullTitle.split(' Ne Demek')[0].trim();
-  if (!phrase) return;
-
-  
-  const btn = document.createElement('button');
-  btn.className = 'pronounce-btn';
-  btn.innerHTML = '🔊 Dinle';
-  btn.title = 'Telaffuzu Dinle';
-  
-  
-  const header = titleElement.parentElement;
-  if (header) {
-    header.appendChild(btn);
-  }
-
-  btn.addEventListener('click', function() {
-    btn.disabled = true;
-    const utterance = new SpeechSynthesisUtterance(phrase);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.9;
-    
-    utterance.onend = function() { btn.disabled = false; };
-    utterance.onerror = function() { btn.disabled = false; };
-    
-    const voices = window.speechSynthesis.getVoices();
-    const englishVoice = voices.find(v => v.lang === 'en-US');
-    if (englishVoice) utterance.voice = englishVoice;
-    
-    window.speechSynthesis.speak(utterance);
-  });
-});
 </script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5396352673127117"
      crossorigin="anonymous"></script>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-9622HBKFVR"></script>
@@ -9823,10 +9785,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
 <footer class="footer">
     <nav class="footer-menu">
-        <a href="/phrasalverbs/phrasal-verbs/hakkimizda/">Hakkımızda</a>
-        <a href="/phrasalverbs/phrasal-verbs/iletisim/">İletişim</a>
-        <a href="/phrasalverbs/phrasal-verbs/gizlilik-politikasi/">Gizlilik Politikası</a>
-        <a href="/phrasalverbs/phrasal-verbs/kullanim-sartlari/">Kullanım Şartları</a>
     </nav>
     <p class="footer-copyright">
         &copy; 2026 Phrasal Verb Rehberi · Powered by Hugo & PaperMod
