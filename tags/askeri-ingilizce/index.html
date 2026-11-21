@@ -108,56 +108,233 @@
         </ul>
     </nav>
 </header>
-<main class="main">
+<main class="main"><style>
+.pv-index-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 4px 0 28px;
+}
 
-<header class="page-header">
-    <h1>Askeri İngilizce</h1>
-</header>
+.pv-index-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
 
-<div class="post-list">
-    <article class="post-entry">
-        <header class="entry-header">
-            <h2>&#39;load out&#39; ne demek? Anlamı, Kullanımı ve Örnek Cümleler</h2>
-        </header>
-        <div class="entry-content">
-            <p>Telaffuz: /loʊd aʊt/📖 Köken ve Yapı &lsquo;Load&rsquo; (yüklemek) ve &lsquo;out&rsquo; (dışarı) kelimelerinin birleşmesiyle oluşmuştur. 20. yüzyılda özellikle askeri ve lojistik alanlarda …</p>
-        </div>
-        <footer class="entry-footer">
-            <span>20 June 2020</span>
-            <span>·</span>
-            <span>1 dk okuma</span>
-        </footer>
-        <a class="entry-link" aria-label="post link to &#39;load out&#39; ne demek? Anlamı, Kullanımı ve Örnek Cümleler" href="https://cisey.github.io/phrasalverbs/phrasal-verbs/load-out/"></a>
-    </article>
-    <article class="post-entry">
-        <header class="entry-header">
-            <h2>&#39;camp down&#39; ne demek? Anlamı, Kullanımı ve Örnek Cümleler</h2>
-        </header>
-        <div class="entry-content">
-            <p>Telaffuz: /kæmp daʊn/📖 Köken ve Yapı &lsquo;Camp&rsquo; kelimesi Latince &lsquo;campus&rsquo; (alan, düzlük) kökenlidir. &lsquo;Down&rsquo; ise Eski İngilizce &lsquo;dūn&rsquo; (tepe) kelimesinden …</p>
-        </div>
-        <footer class="entry-footer">
-            <span>29 December 2015</span>
-            <span>·</span>
-            <span>1 dk okuma</span>
-        </footer>
-        <a class="entry-link" aria-label="post link to &#39;camp down&#39; ne demek? Anlamı, Kullanımı ve Örnek Cümleler" href="https://cisey.github.io/phrasalverbs/phrasal-verbs/camp-down/"></a>
-    </article>
-    <article class="post-entry">
-        <header class="entry-header">
-            <h2>&#39;bug out&#39; ne demek? Anlamı, Kullanımı ve Örnek Cümleler</h2>
-        </header>
-        <div class="entry-content">
-            <p>Telaffuz: /bəg aʊt/📖 Köken ve Yapı &lsquo;Bug&rsquo; kelimesi 20. yüzyılın ortalarında &lsquo;böcek&rsquo; anlamından sıyrılarak &lsquo;rahatsız etmek, sinirlendirmek&rsquo; anlamında kullanılmaya …</p>
-        </div>
-        <footer class="entry-footer">
-            <span>11 September 2015</span>
-            <span>·</span>
-            <span>1 dk okuma</span>
-        </footer>
-        <a class="entry-link" aria-label="post link to &#39;bug out&#39; ne demek? Anlamı, Kullanımı ve Örnek Cümleler" href="https://cisey.github.io/phrasalverbs/phrasal-verbs/bug-out/"></a>
-    </article>
+.pv-index-head h1 {
+    margin: 0;
+    font-size: 1.45rem;
+    line-height: 1.2;
+}
+
+.pv-count-badge {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary-orange, #ea580c);
+    background: var(--card-bg, #f8fafc);
+    border: 1px solid var(--card-border, #e2e8f0);
+    padding: 3px 10px;
+    border-radius: 999px;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+.pv-filter-input {
+    width: 240px;
+    max-width: 100%;
+    padding: 7px 14px;
+    font-size: 0.9rem;
+    border: 1.5px solid var(--card-border, #e2e8f0);
+    border-radius: 999px;
+    background: var(--theme);
+    color: var(--primary);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.pv-filter-input:focus {
+    border-color: var(--primary-orange, #ea580c);
+}
+
+ 
+.az-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px 0;
+    margin-bottom: 14px;
+    background: var(--theme);
+    border-bottom: 1px solid var(--border);
+}
+
+.az-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--primary);
+    background: var(--card-bg, #f8fafc);
+    border: 1px solid var(--card-border, #e2e8f0);
+    transition: all 0.15s ease;
+}
+
+.az-link:hover {
+    background: var(--primary-orange, #ea580c);
+    color: #fff;
+    border-color: var(--primary-orange, #ea580c);
+}
+
+ 
+.az-section {
+    margin-bottom: 16px;
+    scroll-margin-top: 56px;
+}
+
+.az-letter {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--primary-orange, #ea580c);
+    margin: 0 0 8px 0;
+    padding-bottom: 3px;
+    border-bottom: 1.5px solid var(--card-border, #e2e8f0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.az-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    gap: 6px;
+}
+
+.pv-chip {
+    display: block;
+    padding: 6px 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--card-bg, #f8fafc);
+    border: 1px solid var(--card-border, #e2e8f0);
+    border-radius: 7px;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: border-color 0.15s, color 0.15s, transform 0.12s;
+}
+
+.pv-chip:hover {
+    border-color: var(--primary-orange, #ea580c);
+    color: var(--primary-orange, #ea580c);
+    transform: translateY(-1px);
+}
+
+.pv-empty {
+    display: none;
+    text-align: center;
+    padding: 24px;
+    color: var(--secondary);
+    font-size: 0.92rem;
+}
+
+@media (max-width: 640px) {
+    .pv-filter-input {
+        width: 100%;
+    }
+    .az-grid {
+        grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+        gap: 5px;
+    }
+    .pv-chip {
+        padding: 6px 8px;
+        font-size: 0.84rem;
+    }
+}
+</style>
+
+<div class="pv-index-wrap">
+    <div class="pv-index-head">
+        <h1>Askeri İngilizce<span class="pv-count-badge" id="pv-visible-count">3</span>
+        </h1>
+        <input type="text" id="pv-quick-filter" class="pv-filter-input" placeholder="Listede hızlı süz..." autocomplete="off">
+    </div>
+    <nav class="az-bar" aria-label="Alfabetik Dizin">
+        <a class="az-link" href="#harf-B">B</a>
+        <a class="az-link" href="#harf-C">C</a>
+        <a class="az-link" href="#harf-L">L</a>
+    </nav>
+
+    <div id="pv-list-root">
+        <section class="az-section" id="harf-B" data-letter="B">
+            <h2 class="az-letter">B</h2>
+            <div class="az-grid">
+                    <a class="pv-chip" href="/phrasalverbs/phrasal-verbs/bug-out/" data-pv="bug out" title="&#39;Bug out&#39; İngilizce bir phrasal verb&#39;dür ve genellikle &#39;hızla kaçmak,
+sıvışmak, aceleyle terk etmek&#39; anlamlarına gelir. Ayrıca gözlerin yuvalarından...">bug out</a>
+            </div>
+        </section>
+        <section class="az-section" id="harf-C" data-letter="C">
+            <h2 class="az-letter">C</h2>
+            <div class="az-grid">
+                    <a class="pv-chip" href="/phrasalverbs/phrasal-verbs/camp-down/" data-pv="camp down" title="&#39;Camp down&#39; İngilizce bir phrasal verb olup, genellikle &#39;kamp kurmak&#39;
+veya &#39;geçici olarak bir yerde konaklamak&#39; anlamına gelir. Ancak yaygın kullanımı...">camp down</a>
+            </div>
+        </section>
+        <section class="az-section" id="harf-L" data-letter="L">
+            <h2 class="az-letter">L</h2>
+            <div class="az-grid">
+                    <a class="pv-chip" href="/phrasalverbs/phrasal-verbs/load-out/" data-pv="load out" title="&#39;Load out&#39; bir phrasal verb olup, genellikle bir aracın, konteynerin
+veya bir kişinin içindekileri boşaltmak, yükünü indirmek anlamına gelir. Ayrıca
+bir...">load out</a>
+            </div>
+        </section>
+    </div>
+
+    <div id="pv-empty-msg" class="pv-empty">Eşleşen phrasal verb bulunamadı.</div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const input = document.getElementById('pv-quick-filter');
+    const sections = document.querySelectorAll('.az-section');
+    const countBadge = document.getElementById('pv-visible-count');
+    const emptyMsg = document.getElementById('pv-empty-msg');
+
+    if (!input) return;
+
+    input.addEventListener('input', function () {
+        const q = input.value.trim().toLowerCase();
+        let totalVisible = 0;
+
+        sections.forEach(sec => {
+            const chips = sec.querySelectorAll('.pv-chip');
+            let secVisible = 0;
+            chips.forEach(chip => {
+                const match = !q || chip.dataset.pv.includes(q);
+                chip.style.display = match ? '' : 'none';
+                if (match) secVisible++;
+            });
+            sec.style.display = secVisible > 0 ? '' : 'none';
+            totalVisible += secVisible;
+        });
+
+        countBadge.textContent = totalVisible;
+        emptyMsg.style.display = totalVisible === 0 ? 'block' : 'none';
+    });
+});
+</script>
     </main>
     
 <footer class="footer">
