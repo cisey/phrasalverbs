@@ -187,22 +187,22 @@
 }
 
 .hm-stat {
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: 999px;
-    background: var(--card-bg, #f8fafc);
-    border: 1px solid var(--card-border, #e2e8f0);
+    background: var(--card-bg, #e7dfd2);
+    border: 1px solid var(--card-border, #d4c9b8);
     color: var(--primary);
 }
 
 .hm-stat span {
-    color: var(--primary-orange, #ea580c);
+    color: var(--primary-orange, #c2410c);
 }
 
 .hm-card {
-    background: var(--card-bg, #f8fafc);
-    border: 1px solid var(--card-border, #e2e8f0);
-    border-radius: 14px;
-    padding: 18px;
+    background: var(--card-bg, #e7dfd2);
+    border: 1px solid var(--card-border, #d4c9b8);
+    border-radius: 16px;
+    padding: 20px;
 }
 
 .hm-top {
@@ -211,7 +211,7 @@
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
 }
 
 .hm-svg {
@@ -232,11 +232,11 @@
 
 .hm-hint-box {
     flex: 1;
-    min-width: 200px;
+    min-width: 220px;
     background: var(--theme);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
+    border-radius: 12px;
+    padding: 14px 16px;
 }
 
 .hm-hint-label {
@@ -244,14 +244,14 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--primary-orange, #ea580c);
-    margin-bottom: 4px;
+    color: var(--primary-orange, #c2410c);
+    margin-bottom: 6px;
 }
 
 .hm-hint-text {
-    font-size: 0.9rem;
-    line-height: 1.45;
-    color: var(--secondary);
+    font-size: 0.94rem;
+    line-height: 1.5;
+    color: var(--primary);
     margin: 0;
 }
 
@@ -259,43 +259,46 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 6px;
-    margin: 16px 0 18px;
+    gap: 8px;
+    margin: 20px 0 22px;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 1.65rem;
     font-weight: 800;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .hm-char {
-    min-width: 24px;
-    text-align: center;
-    border-bottom: 2.5px solid var(--border);
-    padding-bottom: 2px;
+    min-width: 28px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 3px;
     color: var(--primary);
 }
 
 .hm-char.revealed {
-    color: var(--primary-orange, #ea580c);
-    border-color: var(--primary-orange, #ea580c);
+    color: var(--primary-orange, #c2410c);
+    border-color: var(--primary-orange, #c2410c);
 }
 
 .hm-space {
-    width: 14px;
+    width: 18px;
 }
 
 .hm-letters {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    gap: 6px;
+    gap: 7px;
 }
 
 .hm-btn {
-    padding: 9px 0;
+    padding: 10px 0;
     font-size: 0.95rem;
     font-weight: 700;
     border: 1.5px solid var(--border);
-    border-radius: 8px;
+    border-radius: 9px;
     background: var(--theme);
     color: var(--primary);
     cursor: pointer;
@@ -304,8 +307,8 @@
 }
 
 .hm-btn:hover:not(:disabled) {
-    border-color: var(--primary-orange, #ea580c);
-    color: var(--primary-orange, #ea580c);
+    border-color: var(--primary-orange, #c2410c);
+    color: var(--primary-orange, #c2410c);
 }
 
 .hm-btn:disabled {
@@ -313,20 +316,20 @@
 }
 
 .hm-btn.correct {
-    background: #16a34a;
-    border-color: #16a34a;
+    background: #15803d;
+    border-color: #15803d;
     color: #fff;
 }
 
 .hm-btn.wrong {
-    background: #dc2626;
-    border-color: #dc2626;
+    background: #b91c1c;
+    border-color: #b91c1c;
     color: #fff;
     opacity: 0.45;
 }
 
 .hm-footer {
-    margin-top: 16px;
+    margin-top: 18px;
     text-align: center;
     min-height: 44px;
 }
@@ -337,8 +340,8 @@
     margin-bottom: 10px;
 }
 
-.hm-msg.win { color: #16a34a; }
-.hm-msg.lose { color: #dc2626; }
+.hm-msg.win { color: #15803d; }
+.hm-msg.lose { color: #b91c1c; }
 
 .hm-actions {
     display: flex;
@@ -348,25 +351,25 @@
 }
 
 .hm-new-btn {
-    padding: 8px 18px;
+    padding: 9px 20px;
     font-size: 0.9rem;
     font-weight: 600;
-    background: var(--primary-orange, #ea580c);
+    background: var(--primary-orange, #c2410c);
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 9px;
     cursor: pointer;
     font-family: inherit;
 }
 
 .hm-detail-link {
-    padding: 8px 14px;
+    padding: 9px 16px;
     font-size: 0.88rem;
     font-weight: 600;
     background: var(--theme);
     color: var(--primary);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 9px;
     text-decoration: none;
 }
 
@@ -376,6 +379,10 @@
     }
     .hm-word {
         font-size: 1.35rem;
+    }
+    .hm-char {
+        min-width: 22px;
+        min-height: 30px;
     }
 }
 </style>
@@ -446,21 +453,43 @@ document.addEventListener('DOMContentLoaded', function () {
     const scoreEl = document.getElementById('hm-score');
     const streakEl = document.getElementById('hm-streak');
     const parts = document.querySelectorAll('.hm-part');
+    const decoder = document.createElement('textarea');
+
+    function decodeHTML(str) {
+        decoder.innerHTML = str || '';
+        return decoder.value;
+    }
 
     function extractWord(title) {
-        return (title || '')
+        return decodeHTML(title || '')
             .replace(/\s+ne demek\?.*$/i, '')
             .replace(/^['‘’"]+|['‘’"]+$/g, '')
             .trim()
             .toUpperCase();
     }
 
-    function maskHint(text, phrase) {
-        if (!text) return 'Bu phrasal verb\'ü harf tahmin ederek bul.';
-        const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        let cleaned = text.replace(new RegExp(escaped, 'ig'), '_____');
-        if (cleaned.length > 180) cleaned = cleaned.slice(0, 177) + '...';
-        return cleaned;
+    function maskHint(rawText, phrase) {
+        if (!rawText) return 'Bu phrasal verb\'ü harf tahmin ederek bul.';
+        let cleaned = decodeHTML(rawText).replace(/\s+/g, ' ').trim();
+
+        
+        const variants = [phrase, phrase.replace(/\s+/g, '-')];
+        variants.forEach(v => {
+            const escaped = v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            cleaned = cleaned.replace(new RegExp(escaped, 'ig'), '_____');
+        });
+
+        
+        cleaned = cleaned
+            .replace(/^['‘’"]?_____['‘’"]?\s+bir\s+phrasal\s+verb\s+olup\s+/i, '')
+            .replace(/^['‘’"]?_____['‘’"]?\s+fiili\s+/i, '')
+            .trim();
+
+        if (cleaned.length > 0) {
+            cleaned = cleaned.charAt(0).toLocaleUpperCase('tr-TR') + cleaned.slice(1);
+        }
+        if (cleaned.length > 220) cleaned = cleaned.slice(0, 217) + '...';
+        return cleaned || 'Bu phrasal verb\'ü harf tahmin ederek bul.';
     }
 
     function renderWord() {
@@ -553,7 +582,7 @@ document.addEventListener('DOMContentLoaded', function () {
         msgEl.textContent = '';
         msgEl.className = 'hm-msg';
         detailLink.style.display = 'none';
-        hintEl.textContent = maskHint(current.description || current.summary, target);
+        hintEl.textContent = maskHint(current.description, target);
         renderParts();
         renderWord();
         renderKeyboard();
@@ -570,11 +599,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    fetch('\/phrasalverbs\/phrasal-verbs\/index.json')
+    fetch('\/phrasalverbs\/index.json')
         .then(r => r.json())
         .then(data => {
             words = data.filter(item => {
-                if (!(item.permalink && item.permalink.includes('/phrasal-verbs/') && !['/ara/', '/hakkimizda/', '/iletisim/', '/gizlilik-politikasi/', '/kullanim-sartlari/'].some(s => item.permalink.includes(s)))) return false;
+                if (!(item.permalink && item.permalink.includes('/phrasal-verbs/') && item.description)) return false;
+                if (['/ara/', '/hakkimizda/', '/iletisim/', '/gizlilik-politikasi/', '/kullanim-sartlari/'].some(s => item.permalink.includes(s))) return false;
                 const w = extractWord(item.title);
                 return /^[A-Z\s-]+$/.test(w) && w.length >= 4 && w.length <= 24;
             });
